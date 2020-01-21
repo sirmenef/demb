@@ -1,4 +1,4 @@
-﻿@model contact
+﻿@model Contacts
 
 @{
     ViewBag.Title = "create";
@@ -8,26 +8,26 @@
 
 <h1>Create</h1>
 
-<h4>contact</h4>
+<h4>Contacts</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form method="post" asp-controller="Home" asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="@Model.name" class="control-label"></label>
-                <input asp-for="@Model.name" class="form-control" />
-                <span asp-validation-for="@Model.name" class="text-danger"></span>
+                <label asp-for="@Model.Name" class="control-label"></label>
+                <input asp-for="@Model.Name" class="form-control" />
+                <span asp-validation-for="@Model.Name" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="@Model.phone" class="control-label"></label>
-                <input asp-for="@Model.phone" class="form-control" />
-                <span asp-validation-for="@Model.phone" class="text-danger"></span>
+                <label asp-for="@Model.PhoneNum" class="control-label"></label>
+                <input asp-for="@Model.PhoneNum" class="form-control" />
+                <span asp-validation-for="@Model.PhoneNum" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="@Model.email" class="control-label"></label>
-                <input asp-for="@Model.email" class="form-control" />
-                <span asp-validation-for="@Model.email" class="text-danger"></span>
+                <label asp-for="@Model.Email" class="control-label"></label>
+                <input asp-for="@Model.Email" class="form-control" />
+                <span asp-validation-for="@Model.Email" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />

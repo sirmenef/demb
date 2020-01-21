@@ -35,23 +35,23 @@ namespace Demb.Controllers
 
         [HttpPost]
         [Route("/Create")]
-        public IActionResult Create(contact contct)
+        public IActionResult Create(Contacts contct)
         {
             _sql.AddContact(contct);
             return RedirectToAction("GetContact", contct);
         }
 
 
-        [Route("/EditContact/{id}")]
+        [Route("/EditContact/{Id}")]
         [HttpPost]
-        public IActionResult EditContact(contact contact)
+        public IActionResult EditContact(Contacts contacts)
         {
-            _sql.EditContact(contact);
-            return RedirectToAction("GetContact", new {id = contact.id});
+            _sql.EditContact(contacts);
+            return RedirectToAction("GetContact", new {id = contacts.Id});
         }
 
 
-        [Route("/EditContact/{id}")]        
+        [Route("/EditContact/{Id}")]        
         [HttpGet]
         public IActionResult EditContact(int id)
         {
@@ -59,14 +59,14 @@ namespace Demb.Controllers
             return View("Edit", model);
         }
 
-        [Route("/delete/{id}")]
+        [Route("/delete/{Id}")]
         public IActionResult DeleteContact(int id)
         {
             _sql.DeleteContact(id);
             return RedirectToAction("Index");
         }
 
-        [Route("/details/{id}")]
+        [Route("/details/{Id}")]
         public IActionResult GetContact(int id)
         {
             var model = _sql.GetContact(id);

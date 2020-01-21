@@ -15,40 +15,40 @@ namespace Demb.Controllers
         {
             _context = context;
         }
-        public contact GetContact(int id)
+        public Contacts GetContact(int id)
         {
-            var cont = _context.contact.FirstOrDefault(x => x.id == id);
+            var cont = _context.contacts.FirstOrDefault(x => x.Id == id);
             return cont;
         }
 
-        public contact EditContact(contact contact)
+        public Contacts EditContact(Contacts contacts)
         {
-            var model = _context.contact.Attach(contact);
+            var model = _context.contacts.Attach(contacts);
             model.State = EntityState.Modified;
             _context.SaveChanges();
-            return contact;
+            return contacts;
 
         }
 
-        public contact DeleteContact(int id)
+        public Contacts DeleteContact(int id)
         {
-            var contact = _context.contact.FirstOrDefault(x => x.id == id);
-            _context.contact.Remove(contact);
+            var contact = _context.contacts.FirstOrDefault(x => x.Id == id);
+            _context.contacts.Remove(contact);
             _context.SaveChanges();
             return contact;
         }
 
-        public contact AddContact(contact contact)
+        public Contacts AddContact(Contacts contacts)
         {
-            var a = contact;
-            _context.contact.Add(a);
+            var a = contacts;
+            _context.contacts.Add(a);
             _context.SaveChanges();
-            return contact;
+            return contacts;
         }
 
-        public IEnumerable<contact> ListContacts()
+        public IEnumerable<Contacts> ListContacts()
         {
-            return _context.contact;
+            return _context.contacts;
         }
     }
     

@@ -12,6 +12,6 @@ namespace Demb.Models
         {
         }
 
-        public DbSet<contact> contact { get; set; }
+        public DbSet<Contacts> contacts { get; set; }
     }
 }

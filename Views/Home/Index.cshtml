@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Demb.Models.contact>
+﻿@model IEnumerable<Demb.Models.Contacts>
 
 @{
     ViewBag.Title = "Home";
@@ -32,18 +32,18 @@
 
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => contact.name)
+                    @Html.DisplayFor(modelItem => contact.Name)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => contact.phone)
+                    @Html.DisplayFor(modelItem => contact.PhoneNum)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => contact.email)
+                    @Html.DisplayFor(modelItem => contact.Email)
                 </td>
                 <td>
-                    <a asp-controller="Home"  asp-action="EditContact" asp-route-id="@contact.id">Edit</a> |
-                    <a asp-controller="Home" asp-action="GetContact" asp-route-id="@contact.id">Details</a> |
-                    <a asp-controller="Home" asp-action="DeleteContact" asp-route-id="@contact.id">Delete</a>
+                    <a asp-controller="Home"  asp-action="EditContact" asp-route-id="@contact.Id">Edit</a> |
+                    <a asp-controller="Home" asp-action="GetContact" asp-route-id="@contact.Id">Details</a> |
+                    <a asp-controller="Home" asp-action="DeleteContact" asp-route-id="@contact.Id">Delete</a>
                 </td>
             </tr>
         }
