@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Demb.Controllers
 {
-    public class SQLRepo : IContactRepo
+    public class SQLRepo 
     {
         private readonly AppDbContext _context;
 

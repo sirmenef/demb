@@ -9,11 +9,11 @@ namespace Demb.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly IContactRepo _contact;
+        private readonly SQLRepo _sql;
 
-        public HomeController(IContactRepo contact)
+        public HomeController(SQLRepo sqlRepo)
         {
-            _contact = contact;
+            _sql = sqlRepo;
         }
 
         [Route("/")]
@@ -22,7 +22,7 @@ namespace Demb.Controllers
         [Route("/home/index")]
         public IActionResult Index()
         {
-            var model = _contact.ListContacts();
+            var model = _sql.ListContacts();
             return View(model);
         }
 
@@ -37,7 +37,7 @@ namespace Demb.Controllers
         [Route("/Create")]
         public IActionResult Create(contact contct)
         {
-            _contact.AddContact(contct);
+            _sql.AddContact(contct);
             return RedirectToAction("GetContact", contct);
         }
 
@@ -46,7 +46,7 @@ namespace Demb.Controllers
         [HttpPost]
         public IActionResult EditContact(contact contact)
         {
-            _contact.EditContact(contact);
+            _sql.EditContact(contact);
             return RedirectToAction("GetContact", new {id = contact.id});
         }
 
@@ -55,21 +55,21 @@ namespace Demb.Controllers
         [HttpGet]
         public IActionResult EditContact(int id)
         {
-            var model = _contact.GetContact(id);
+            var model = _sql.GetContact(id);
             return View("Edit", model);
         }
 
         [Route("/delete/{id}")]
         public IActionResult DeleteContact(int id)
         {
-            _contact.DeleteContact(id);
+            _sql.DeleteContact(id);
             return RedirectToAction("Index");
         }
 
         [Route("/details/{id}")]
         public IActionResult GetContact(int id)
         {
-            var model = _contact.GetContact(id);
+            var model = _sql.GetContact(id);
             return View("Details", model);
         }
     }
