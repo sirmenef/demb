@@ -1,0 +1,52 @@
+﻿@model IEnumerable<Demb.Models.contact>
+
+@{
+    ViewBag.Title = "Home";
+}
+<h1>Index</h1>
+
+
+<p>
+    <a href="/Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Phone Number
+            </th>
+            <th>
+                Email
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    @if (Model != null)
+    {
+        @foreach (var contact in Model)
+        {
+
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => contact.name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => contact.phone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => contact.email)
+                </td>
+                <td>
+                    <a asp-controller="Home"  asp-action="EditContact" asp-route-id="@contact.id">Edit</a> |
+                    <a asp-controller="Home" asp-action="GetContact" asp-route-id="@contact.id">Details</a> |
+                    <a asp-controller="Home" asp-action="DeleteContact" asp-route-id="@contact.id">Delete</a>
+                </td>
+            </tr>
+        }
+    }
+    </tbody>
+</table>
