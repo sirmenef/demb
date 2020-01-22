@@ -21,7 +21,7 @@ namespace Demb.Models
         [Display(Name = "Phone Number")]
         public string PhoneNum { get; set; }
 
-
+        [DataType(DataType.EmailAddress)]
         [Column("email")]
         public string Email { get; set; }
 

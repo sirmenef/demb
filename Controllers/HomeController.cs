@@ -4,25 +4,23 @@ using System.Linq;
 using System.Threading.Tasks;
 using Demb.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace Demb.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly SQLRepo _sql;
+        private readonly AppDbContext _context;
 
-        public HomeController(SQLRepo sqlRepo)
+        public HomeController(AppDbContext context)
         {
-            _sql = sqlRepo;
+            _context = context;
         }
 
         [Route("/")]
-        [Route("/home")]
-        [Route("/index")]
-        [Route("/home/index")]
         public IActionResult Index()
         {
-            var model = _sql.ListContacts();
+            var model = _context.contacts;
             return View(model);
         }
 
@@ -37,7 +35,8 @@ namespace Demb.Controllers
         [Route("/Create")]
         public IActionResult Create(Contacts contct)
         {
-            _sql.AddContact(contct);
+            _context.contacts.Add(contct);
+            _context.SaveChanges();
             return RedirectToAction("GetContact", contct);
         }
 
@@ -46,7 +45,9 @@ namespace Demb.Controllers
         [HttpPost]
         public IActionResult EditContact(Contacts contacts)
         {
-            _sql.EditContact(contacts);
+            var model = _context.contacts.Attach(contacts);
+            model.State = EntityState.Modified;
+            _context.SaveChanges();
             return RedirectToAction("GetContact", new {id = contacts.Id});
         }
 
@@ -55,21 +56,23 @@ namespace Demb.Controllers
         [HttpGet]
         public IActionResult EditContact(int id)
         {
-            var model = _sql.GetContact(id);
+            var model = _context.contacts.FirstOrDefault(Id => Id.Id == id);
             return View("Edit", model);
         }
 
         [Route("/delete/{Id}")]
         public IActionResult DeleteContact(int id)
         {
-            _sql.DeleteContact(id);
+            var  model = _context.contacts.FirstOrDefault(Id => Id.Id == id);
+            _context.contacts.Remove(model);
+            _context.SaveChanges();
             return RedirectToAction("Index");
         }
 
         [Route("/details/{Id}")]
         public IActionResult GetContact(int id)
         {
-            var model = _sql.GetContact(id);
+            var model = _context.contacts.FirstOrDefault(Id => Id.Id == id);
             return View("Details", model);
         }
     }
