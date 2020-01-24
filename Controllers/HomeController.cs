@@ -33,7 +33,7 @@ namespace Demb.Controllers
 
         [HttpPost]
         [Route("/Create")]
-        public IActionResult Create(Contacts contct)
+        public IActionResult Create(Contact contct)
         {
             _context.contacts.Add(contct);
             _context.SaveChanges();
@@ -43,12 +43,12 @@ namespace Demb.Controllers
 
         [Route("/EditContact/{Id}")]
         [HttpPost]
-        public IActionResult EditContact(Contacts contacts)
+        public IActionResult EditContact(Contact contact)
         {
-            var model = _context.contacts.Attach(contacts);
+            var model = _context.contacts.Attach(contact);
             model.State = EntityState.Modified;
             _context.SaveChanges();
-            return RedirectToAction("GetContact", new {id = contacts.Id});
+            return RedirectToAction("GetContact", new {id = contact.Id});
         }
 
 
@@ -70,7 +70,7 @@ namespace Demb.Controllers
         }
 
         [Route("/details/{Id}")]
-        public IActionResult GetContact(int id)
+        public ActionResult GetContact(int id)
         {
             var model = _context.contacts.FirstOrDefault(Id => Id.Id == id);
             return View("Details", model);

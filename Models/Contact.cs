@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Demb.Models
 {
-    public class Contacts
+    public class Contact
     {
         [Column("id")]
         public int Id { get; set; }
