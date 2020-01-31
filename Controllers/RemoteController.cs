@@ -4,12 +4,14 @@ using System.Linq;
 using System.Runtime.InteropServices.ComTypes;
 using System.Threading.Tasks;
 using Demb.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace Demb.Controllers
 {
     [Route("api/contacts")]
+    [Authorize]
     public class RemoteController : Controller
     {
         private readonly AppDbContext _context;
