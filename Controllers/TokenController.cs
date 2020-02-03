@@ -18,15 +18,17 @@ namespace Demb.Controllers
     public class TokenController : ControllerBase
     {
         private readonly IConfiguration _config;
+        private readonly AppDbContext _context;
 
-        public TokenController(IConfiguration config)
+        public TokenController(IConfiguration config, AppDbContext context)
         {
             _config = config;
+            _context = context;
         }
 
+        [HttpPost("")]
         [AllowAnonymous]
-        [HttpPost]
-        public IActionResult CreateToken([FromBody]LoginModel login)
+        public IActionResult CreateToken([FromBody]Login login)
         {
             IActionResult response = Unauthorized();
             var user = Authenticate(login);
@@ -40,15 +42,30 @@ namespace Demb.Controllers
             return response;
         }
 
+        [HttpPost("")]
+        [AllowAnonymous]
+        public async Task<string> CreateUser([FromBody]User newUser)
+        {
+
+            if (ModelState.IsValid)
+            {
+                await _context.user.AddAsync(newUser);
+                await _context.SaveChangesAsync();
+                return "\" USer Created \"";
+            }
+
+            return null;
 
 
-        private User Authenticate(LoginModel login)
+        }
+
+        private User Authenticate(Login login)
         {
             User user = null;
-
-            if (login.Username == "mario" && login.Password == "secret")
+            var model = _context.user.FirstOrDefault(x => x.Username == login.Username);
+            if (login.Username == model.Username && login.Password == model.Password)
             {
-                user = new User { Name = "Mario Rossi", Email = "mario.rossi@domain.com" };
+                user = model;
             }
             return user;
         }
