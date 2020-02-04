@@ -8,8 +8,8 @@ namespace Demb.Models
 {
     public class User
     {
-        [Required]
-        public string Name { get; set; }
+        
+        public int id { get; set; }
         [Required]
         public string Email { get; set; }
         [Required]

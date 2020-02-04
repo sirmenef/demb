@@ -13,7 +13,7 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace Demb.Controllers
 {
-    [Route("api/auth")]
+    [Route("api/")]
     [ApiController]
     public class TokenController : ControllerBase
     {
@@ -28,7 +28,7 @@ namespace Demb.Controllers
 
         [HttpPost("")]
         [AllowAnonymous]
-        public IActionResult CreateToken([FromBody]Login login)
+        public async Task<IActionResult> Login([FromBody]Login login)
         {
             IActionResult response = Unauthorized();
             var user = Authenticate(login);
@@ -42,7 +42,7 @@ namespace Demb.Controllers
             return response;
         }
 
-        [HttpPost("")]
+        [HttpPost("create")]
         [AllowAnonymous]
         public async Task<string> CreateUser([FromBody]User newUser)
         {
