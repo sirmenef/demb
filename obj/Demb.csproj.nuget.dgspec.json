@@ -1,32 +1,28 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\sbolaji\\source\\repos\\Demb\\Demb.csproj": {}
+    "/home/shaft/Desktop/contactsapp/Demb.csproj": {}
   },
   "projects": {
-    "C:\\Users\\sbolaji\\source\\repos\\Demb\\Demb.csproj": {
+    "/home/shaft/Desktop/contactsapp/Demb.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\sbolaji\\source\\repos\\Demb\\Demb.csproj",
+        "projectUniqueName": "/home/shaft/Desktop/contactsapp/Demb.csproj",
         "projectName": "Demb",
-        "projectPath": "C:\\Users\\sbolaji\\source\\repos\\Demb\\Demb.csproj",
-        "packagesPath": "C:\\Users\\sbolaji\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\sbolaji\\source\\repos\\Demb\\obj\\",
+        "projectPath": "/home/shaft/Desktop/contactsapp/Demb.csproj",
+        "packagesPath": "/home/shaft/.nuget/packages/",
+        "outputPath": "/home/shaft/Desktop/contactsapp/obj/",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+          "/usr/share/dotnet/sdk/NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\sbolaji\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "/home/shaft/.config/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp2.2"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -79,7 +75,7 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/3.1.101/RuntimeIdentifierGraph.json"
         }
       }
     }

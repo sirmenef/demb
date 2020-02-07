@@ -64,6 +64,10 @@ namespace Demb
             //     };
             // });
 
+            services.AddCors(options =>
+            {
+                options.AddDefaultPolicy(builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+            });
             services.AddMvc();
         }
 
@@ -76,7 +80,9 @@ namespace Demb
             }
 
             app.UseStaticFiles();
+            app.UseCors(builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
             app.UseAuthentication();
+            
             app.UseMvc();
 
             dbContext.Database.EnsureCreated();

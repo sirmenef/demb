@@ -49,7 +49,7 @@ namespace Demb.Controllers
 
             if (ModelState.IsValid)
             {
-                await _context.user.AddAsync(newUser);
+                await _context.users.AddAsync(newUser);
                 await _context.SaveChangesAsync();
                 return "\" USer Created \"";
             }
@@ -62,7 +62,7 @@ namespace Demb.Controllers
         private User Authenticate(Login login)
         {
             User user = null;
-            var model = _context.user.FirstOrDefault(x => x.Username == login.Username);
+            var model = _context.users.FirstOrDefault(x => x.Username == login.Username);
             if (login.Username == model.Username && login.Password == model.Password)
             {
                 user = model;
